@@ -7,26 +7,29 @@ import util.DatabaseUtil;
 
 //dao = database acess object
 public class UserDAO {
+	Connection conn;
+	PreparedStatement pstmt;
 	
-		public int join(String name,String id, String password,String grade,String nickname,String email) {
-			String SQL = "INSERT INTO MEMBER VALUES (?,?,?,?,?,?)";
-			try {
-				Connection conn = DatabaseUtil.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				pstmt.setString(1, name);
-				pstmt.setString(2, id); 
-				pstmt.setString(3, password); 
-				pstmt.setString(4, grade); 
-				pstmt.setString(5, nickname); 
-				pstmt.setString(6, email); 
-				
-				
-				return pstmt.executeUpdate();
-				
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-			return -1;
+	
+	public int join(UserDTO dto) {
+		int result = 0;
+		String SQL = "INSERT INTO member VALUES (?,?,?,?,?,?)";
+		try {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getId()); 
+			pstmt.setString(3, dto.getPassword()); 
+			pstmt.setString(4, dto.getGrade()); 
+			pstmt.setString(5, dto.getNickname()); 
+			pstmt.setString(6, dto.getEmail()); 
+			
+			result = pstmt.executeUpdate();		
+		}catch(Exception e){
+			System.out.println("Exception [join]: " + e.getMessage());
+			e.printStackTrace();
 		}
+		return result;
+	}
 
 }
