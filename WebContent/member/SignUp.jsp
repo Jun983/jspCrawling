@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>SignUp.jsp</title>
+<title>회원가입</title>
 </head>
 <body>
 	<h3>Sign Up</h3>

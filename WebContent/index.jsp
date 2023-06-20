@@ -15,7 +15,6 @@
 		nickname<input type="text" name="nickname" /><br>	
 		email<input type="text" name="email" /><br>	
 		<input type="submit" value="회원가입" />
-	</form>
-	
+	</form>	
 </body>
 </html>
