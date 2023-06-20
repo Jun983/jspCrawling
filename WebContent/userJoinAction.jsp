@@ -13,7 +13,7 @@
 	String grade = "user";
 	String nickname = null;
 	String email = null;
-	
+
 	if(request.getParameter("name") != null)
 	{
 		name = (String) request.getParameter("name");
@@ -34,7 +34,7 @@
 	}
 	if(request.getParameter("email") != null){
 		email = (String) request.getParameter("email");
-	}
+	} 
 	
 	if(id ==null){
 		PrintWriter script = response.getWriter();
