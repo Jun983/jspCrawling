@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import util.DatabaseUtil;
 
 //dao = database acess object
-public class UserDAO {
+public class UserDAO extends DatabaseUtil{
 	Connection conn;
 	PreparedStatement pstmt;
 	
@@ -14,7 +14,7 @@ public class UserDAO {
 		int result = 0;
 		String SQL = "INSERT INTO member VALUES (?,?,?,?,?,?)";
 		try {
-			conn = DatabaseUtil.getConnection();
+			conn = getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			
 			pstmt.setString(1, dto.getName());
