@@ -1,3 +1,4 @@
+<%@page import="util.JSFunction"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="user.UserDTO"%>
 <%@page import="user.UserDAO"%>
@@ -6,6 +7,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	
+	// 입력된 값들을 변수에 저장
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
 	String name = request.getParameter("name");
@@ -15,6 +17,7 @@
 	UserDAO dao = new UserDAO();
 	UserDTO dto = new UserDTO();
 	
+	// dto 객체에 각 변수값들 저장
 	dto.setName(name);
 	dto.setId(id);
 	dto.setPassword(password);
@@ -22,17 +25,18 @@
 	dto.setNickname(nickname);
 	dto.setEmail(email);
 	
+	// dto 객체 값들로 dao를 이용하여 데이터베이스에 접근하여 DB 저장
 	int result = dao.insertMember(dto);
 	
+	PrintWriter script = response.getWriter();
+	
+	// DB 저장 성공 시
 	if(result == 1){ 
+		
 		System.out.print("회원가입 성공!!");
 		
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('회원가입에 성공했습니다');");
-		script.println("location.href = 'LoginForm.jsp';");
-		script.println("</script>");
-		
+		// "관리자로 올리기 성공했습니다" 문구를 alert()함수로 출력 후 해당 url로 이동
+		script.println(JSFunction.executeAlert("관리자로 올리기 성공했습니다.", "./UpdateMember.jsp"));
 		script.close();
 	}
 %>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>FindId.jsp</title>
+<title>아이디 찾기</title>
 </head>
 <body>
 	<h3>아이디 찾기</h3>
