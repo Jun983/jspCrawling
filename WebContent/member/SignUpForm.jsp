@@ -1,5 +1,3 @@
-<%@page import="util.JSFunction"%>
-<%@page import="member.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
