@@ -10,6 +10,7 @@
     <welcome-file>default.html</welcome-file>
   </welcome-file-list>
   
+  <!--
   <context-param>
   	<param-name>OracleDriver</param-name>
   	<param-value>oracle.jdbc.OracleDriver</param-value>
@@ -26,5 +27,6 @@
   	<param-name>OraclePwd</param-name>
   	<param-value>0525</param-value>
   </context-param>
+   -->
   
 </web-app>

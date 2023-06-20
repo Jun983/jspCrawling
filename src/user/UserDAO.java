@@ -10,13 +10,13 @@ public class UserDAO {
 	Connection conn;
 	PreparedStatement pstmt;
 	
-	
 	public int join(UserDTO dto) {
 		int result = 0;
 		String SQL = "INSERT INTO member VALUES (?,?,?,?,?,?)";
 		try {
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
+			
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getId()); 
 			pstmt.setString(3, dto.getPassword()); 
