@@ -10,7 +10,7 @@
 	
 	// 임시 테이블 생성
 	TemporaryBoardDAO tt = new TemporaryBoardDAO();
-	tt.createBoard("keyword");
+	tt.createBoard("bj");
 	tt.close();
 	
 	// 크롤링 과정

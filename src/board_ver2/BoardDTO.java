@@ -7,6 +7,7 @@ public class BoardDTO {
 	private String content;
 	private String regidate;
 	private String link;
+	private String category;
 	private String id;
 	
 	public String getNum() {
@@ -55,6 +56,14 @@ public class BoardDTO {
 	
 	public void setLink(String link) {
 		this.link = link;
+	}
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	public String getId() {
