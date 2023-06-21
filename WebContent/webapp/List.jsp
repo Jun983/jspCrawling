@@ -1,7 +1,7 @@
 <%@ page import="java.util.List"%>
-<%@ page import="board.BoardDAO"%>
-<%@ page import="board.BoardDTO"%>
-<%@ page import="board.BoardTable"%>
+<%@ page import="board_ver1.BoardDAO"%>
+<%@ page import="board_ver1.BoardDTO"%>
+<%@ page import="board_ver1.BoardTable"%>
 <%@ page import="javax.servlet.ServletContext"%>
 
 <%@ page import="java.sql.PreparedStatement"%>

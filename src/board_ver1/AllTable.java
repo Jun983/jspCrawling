@@ -1,4 +1,4 @@
-package board;
+package board_ver1;
 
 public class AllTable {
 	private String tname;

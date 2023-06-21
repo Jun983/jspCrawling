@@ -1,6 +1,6 @@
 <%@ page import = "java.util.List" %>
-<%@ page import = "board.AllTableDAO" %>
-<%@ page import = "board.AllTable" %>
+<%@ page import = "board_ver1.AllTableDAO" %>
+<%@ page import = "board_ver1.AllTable" %>
 <%@ page import = "javax.servlet.ServletContext" %>
 
 <%@ page import = "java.sql.PreparedStatement" %>

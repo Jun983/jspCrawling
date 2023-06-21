@@ -1,4 +1,4 @@
-package board;
+package board_ver1;
 
 import javax.servlet.ServletContext;
 

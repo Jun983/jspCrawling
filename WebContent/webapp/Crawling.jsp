@@ -1,7 +1,7 @@
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="common.JDBConnect"%>
-<%@ page import="board.BoardCreate"%>
+<%@ page import="board_ver1.BoardCreate"%>
 
 <%@ page import="java.io.File"%>
 
