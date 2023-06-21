@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 // DAO: Data Access Object
 // DTO: Data Transfer Object
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 public class DatabaseUtil {
 	
 	protected Connection conn;
+	protected Statement stmt;
 	protected PreparedStatement pstmt;
 	protected ResultSet rs;
 	
@@ -33,7 +35,8 @@ public class DatabaseUtil {
 	
 	public void close() { // db 자원 해제 메소드
 		try {
-			if(rs != null)rs.close();
+			if(rs != null) rs.close();
+			if(stmt != null) stmt.close();
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
 			
