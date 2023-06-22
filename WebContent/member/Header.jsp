@@ -10,12 +10,17 @@
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-cyborg-gaming.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+		$(document).ready(function() {
+		    $('.dropdown-toggle').mouseover(function() {
+		        $('.dropdown-menu').toggle();
+		    });
+		});
+	</script>
 </head>
 <body>
 	<header class="header-area header-sticky">
@@ -33,7 +38,13 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="profile.html">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                        <li><a href="#" class="dropdown-toggle">Profile <img src="img/spider-main.PNG" alt=""></a>
+	                        <ul class="dropdown-menu" style="width:200px;">
+		 						<!-- 현재가 로그인 페이지이기 때문에 파란색이 들어와 있는거임  -->
+		 						<li class="width-long"><a href="login.jsp">선택1</a></li>
+		 						<li class="width-long"><a href="join.jsp">선택2</a></li>
+		 					</ul>
+                        </li>
                     </ul>
                     <!-- ***** Menu End ***** -->
                 </nav>

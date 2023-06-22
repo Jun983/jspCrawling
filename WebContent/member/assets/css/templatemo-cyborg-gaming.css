@@ -378,7 +378,6 @@ Header Style
   background-color: #4ea685;
   position: absolute;
   height: 70px;
-  top: 15px;
   left: 0;
   right: 0;
   z-index: 100;
@@ -491,7 +490,7 @@ Header Style
 
 .header-area .main-nav .nav li:last-child a {
   background-color: #4ea685;
-  padding: 8px 10px 8px 20px;
+  padding: 10px 10px 8px 20px;
   border-radius: 23px;
 }
 
@@ -499,6 +498,22 @@ Header Style
   max-width: 30px;
   border-radius: 50%;
   margin-left: 5px;
+}
+
+.header-area .main-nav .nav li:last-child .dropdown-menu .width-long a{
+  color: #AAD584  !important;
+  background-color: #fff;
+  margin:10px;
+}
+
+.header-area .main-nav .nav li:last-child .dropdown-menu .width-long:hover a,
+.header-area .main-nav .nav li:last-child .dropdown-menu .width-long a.active {
+  color: #4ea685 !important;
+  background-color: #fff;
+}
+
+.width-long {
+	width: 200px;
 }
 
 .header-area .main-nav .nav li.has-sub ul.sub-menu li:last-child a:hover,
@@ -514,7 +529,7 @@ Header Style
 .header-area .main-nav .nav li:last-child:hover a,
 .header-area .main-nav .nav li:last-child a.active {
   color: #fff !important;
-  background-color: #AAD584 !important;
+  background-color: #AAD584;
 }
 
 .background-header .main-nav .nav li:hover a,
