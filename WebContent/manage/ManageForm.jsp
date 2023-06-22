@@ -71,6 +71,7 @@
 								<div class="px-8 py-4 border-b border-light-grey w-1\/2">
 
 								</div>
+								<div class="flex-grow"></div>
 								<div class="px-3 py-4 border-b border-light-grey w-auto">
 									<div class="font-bold text-xl input-group"><input type="text" placeholder="아이디를 입력하세요"/></div>
 								</div>
@@ -78,6 +79,7 @@
 									<div class="font-bold text-sm main-button"><a href="#">검색</a></div>
 								</div>
 							</div>
+							<form action="" method="post" id="myForm">
                             <div class="table-responsive">
                                 <table class="table text-center text-grey-darkest">
                                     <thead class="bg-grey-dark text-white text-normal">
@@ -89,6 +91,7 @@
                                         <th scope="col" class="table-normal">nickname</th>
                                         <th scope="col" class="table-long">email</th>
                                         <th scope="col" class="table-long">regidate</th>
+                                        <th scope="col" class="table-short">check</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -106,13 +109,26 @@
 	                                        <td><%=dto.getNickname() %></td>
 	                                        <td><%=dto.getEmail() %></td>
 	                                        <td><%=dto.getRegidate() %></td>
+	                                        <td><input type="checkbox" name="checkId" value="<%=dto.getId() %>"/></td>
 	                                    </tr>	
                                     <%		
                                     	}
                                     %>
                                     </tbody>
                                 </table>
+                                <div class="flex justify-end">
+	                                <div class="px-3 py-8 border-b border-light-grey">
+										<div class="font-bold text-sm main-button"><input type="submit" id="myButton" value="승급" onclick="handleSubmit(event)"/></div>
+									</div>
+									<div class="px-3 py-8 border-b border-light-grey">
+										<div class="font-bold text-sm main-button"><input type="submit" id="myButton" value="박탈" onclick="handleSubmit(event)"/></div>
+									</div>
+									<div class="px-3 py-8 border-b border-light-grey">
+										<div class="font-bold text-sm main-button"><input type="submit" id="myButton" value="삭제" onclick="handleSubmit(event)"/></div>
+									</div>
+								</div>
        						</div>
+       						</form>
                         </div>
                     </div>
                 </div>
@@ -122,7 +138,24 @@
     </div>
 
 </div>
-<script src="./main.js"></script>
+<script>
+//Submit 버튼 클릭 시 실행되는 함수
+function handleSubmit(event) {
+    event.preventDefault(); // 폼의 기본 동작(페이지 새로고침)을 막기 위해 호출합니다.
+
+    // 원하는 조건에 따라 다른 action URL을 설정합니다.
+    var form = document.getElementById("myForm");
+    if (event.target.value == "승급") {
+        form.action = "./UpgradeMemberProc.jsp";
+    } else if (event.target.value == "박탈") {
+        form.action = "./DowngradeMemberProc.jsp";
+    } else if (event.target.value == "삭제") {
+        form.action = "./DeleteMemberProc.jsp";
+    }
+
+    form.submit(); // 설정된 action URL로 폼을 제출합니다.
+}
+</script>
 </body>
 
 </html>

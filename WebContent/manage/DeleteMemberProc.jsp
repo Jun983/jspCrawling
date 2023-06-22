@@ -7,28 +7,44 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	
-	// 입력된 id 값을 변수에 저장
-	String id = request.getParameter("id");
-	
-	// dao 객체를 이용해 id에 해당하는 데이터 값 전부 삭제
+	// 입력된 id값을 변수에 저장
+	String id[] = request.getParameterValues("checkId");
 	MemberDAO dao = new MemberDAO();
 	
-	int result = dao.deleteMember(id);
-	dao.close();
+	// dao 객체를 이용해 각 id에 해당하는 grade 값 "manager"로 수정
+	int[] result = new int[id.length];
+	
+	for(int i = 0; i < id.length; i++){
+		result[i] = dao.deleteMember(id[i]);
+	}
 	
 	PrintWriter script = response.getWriter();
+	dao.close();
 	
-	// 계정 삭제 성공 시
-	if(result == 1)
-		script.println(JSFunction.executeBackAlert("계정 삭제에 성공하셨습니다. 이전 페이지로 돌아갑니다."));
+	// 관리자 업데이트 확인 제어
 	
-	// 계정 삭제 실패 시
-	else
-		script.println(JSFunction.executeBackAlert("계정 삭제에 실패하였습니다. 이전 페이지로 돌아갑니다."));
+	int resultCheck = 1;
+	
+	for(int i = 0; i < result.length; i++){
+		if(result[i] == 0){
+			resultCheck = 0;
+			break;
+		}
+	}
+	
+	// 관리자 승급 성공 시
+	if(resultCheck == 1) { 
+		System.out.print("계정 삭제 성공!!");
+		script.println(JSFunction.executeAlert("계정 삭제에 성공하셨습니다.", "./ManageForm.jsp"));
+	}
+	
+	// 관리자 실패 성공 시
+	else {
+		System.out.print("계정 삭제 실패!!");
+		script.println(JSFunction.executeAlert("계정 삭제에 실패하셨습니다.", "./ManageForm.jsp"));
+	}
 	
 	script.close();
-
-
 
 %>
    
