@@ -1,15 +1,17 @@
 package member;
 
+import java.util.ArrayList;
+
 import util.DatabaseUtil;
 
 public class MemberDAO extends DatabaseUtil {
 	
-	// getConnection() 함수 지워짐과 동시 그 기능을 DatabaseUtil 생성자에 넣어
-	// 생성됨과 동시에 db연결이 되겠끔 코드 수정
-	
 	public int insertMember(MemberDTO dto) { // member 테이블에 회원 정보 저장
 		int result = 0;
-		String query = "INSERT INTO member VALUES (?,?,?,?,?,?)";
+		
+		String query = "INSERT INTO member (name, id, password, grade, nickname, email, regidate) ";
+		query += "VALUES (?, ?, ?, ?, ?, ?, NOW())";
+			
 		try {
 			pstmt = conn.prepareStatement(query);
 			
@@ -31,6 +33,7 @@ public class MemberDAO extends DatabaseUtil {
 	public MemberDTO selectMemberLogin(String id, String password) { // member 테이블에 id와 password와 관련된 데이터 추출
         MemberDTO dto = null;
         String query = "SELECT * FROM member WHERE id=? AND password=?";
+        
         try { 
         	pstmt = conn.prepareStatement(query);
         	
@@ -40,12 +43,14 @@ public class MemberDAO extends DatabaseUtil {
         	rs = pstmt.executeQuery();
         	if(rs.next()) {
         		dto = new MemberDTO();
-        		dto.setName(rs.getString(1)); 
-        		dto.setId(rs.getString(2));
-        		dto.setPassword(rs.getString(3));
-        		dto.setGrade(rs.getString(4));
-        		dto.setNickname(rs.getString(5));
-        		dto.setEmail(rs.getString(6));
+        		dto.setNum(rs.getString(1));
+        		dto.setName(rs.getString(2)); 
+        		dto.setId(rs.getString(3));
+        		dto.setPassword(rs.getString(4));
+        		dto.setGrade(rs.getString(5));
+        		dto.setNickname(rs.getString(6));
+        		dto.setEmail(rs.getString(7));
+        		dto.setRegidate(rs.getString(8));
         	}
         } catch(Exception e) {
         	System.out.println("Exception [selectMemberLogin]: " + e.getMessage());
@@ -57,7 +62,8 @@ public class MemberDAO extends DatabaseUtil {
 	public String selectMemberFindId(MemberDTO dto) { // member 테이블에 name, email과 관련된 id 추출
 		String result = "";
 		String query = "SELECT id FROM member WHERE name=? and email=?";
-        try { 
+        
+		try { 
         	pstmt = conn.prepareStatement(query);
              
             pstmt.setString(1, dto.getName());
@@ -72,6 +78,73 @@ public class MemberDAO extends DatabaseUtil {
             e.printStackTrace();
         }
 		 
+		return result;
+	}
+	
+	public String selectMemberGrade(String id) { // member 테이블에 id와 관련된 grade 추출
+		String result = "";
+		String query = "SELECT grade FROM member WHERE id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+		
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+				result = rs.getString("grade");
+		} catch(Exception e) {
+			System.out.println("Exception [selectMemberGrade]: " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public ArrayList<MemberDTO> selectMember() { // member 테이블에 모든 계정을 ArrayList 안에 담아 추출
+		ArrayList<MemberDTO> arr = new ArrayList<MemberDTO>();
+		String query = "SELECT * FROM member";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				dto.setNum(rs.getString("num"));
+				dto.setName(rs.getString("name"));
+				dto.setId(rs.getString("id"));
+				dto.setPassword(rs.getString("password"));
+				dto.setGrade(rs.getString("grade"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setEmail(rs.getString("email"));
+				dto.setRegidate(rs.getString("regidate"));
+				
+				arr.add(dto);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Exception [selectMember]: " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return arr;
+	}
+	
+	public int selectMemberNum() {
+		int result = 0;
+		String query = "SELECT COUNT(id) FROM member";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				result = rs.getInt(1);
+		} catch(Exception e) {
+			System.out.println("Exception [selectMemberNum]: " + e.getMessage());
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 	 

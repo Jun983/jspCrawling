@@ -22,16 +22,16 @@
 		session.setAttribute("id", dto.getId());
 		
 		if (dto.getGrade().equals("user")) // 사용자일 때의 url 진입
-			response.sendRedirect("../main/Main.jsp");
+			response.sendRedirect("../main/MainForm.jsp");
 		
-		if (dto.getGrade().equals("manage")) // 관리자일 때의 url 진입
-			response.sendRedirect("../manage/Manage.jsp");
+		if (dto.getGrade().equals("manager")) // 관리자일 때의 url 진입
+			response.sendRedirect("../manage/ManageForm.jsp");
 	} 
 	
 	// Login 실패: 이전 페이지로 되돌아감
 	else {
 		PrintWriter script = response.getWriter();
-		script.println(JSFunction.executeBackAlert("아이디와 비밀번호가 일치하지 않습니다"));
+		script.println(JSFunction.executeAlert("아이디와 비밀번호가 일치하지 않습니다", "./LoginForm.jsp"));
 		script.close();
 	}
 %>

@@ -1,12 +1,22 @@
 package member;
 
 public class MemberDTO {
-	String name;
-	String id;
-	String password;
-	String grade;
-	String nickname;
-	String email;
+	private String num;
+	private String name;
+	private String id;
+	private String password;
+	private String grade;
+	private String nickname;
+	private String email;
+	private String regidate;
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
 	
 	public String getName() {
 		return name;
@@ -54,5 +64,14 @@ public class MemberDTO {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+
+	public String getRegidate() {
+		return regidate;
+	}
+
+	public void setRegidate(String regidate) {
+		this.regidate = regidate;
 	}
 }

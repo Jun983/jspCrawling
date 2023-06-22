@@ -178,6 +178,10 @@ input { /* 1 */
   overflow: visible;
 }
 
+.input-container {
+	margin-top: 10px;
+}
+
 .input-group input {
   padding: 1rem 3rem;
   font-size: 1rem;
@@ -185,6 +189,7 @@ input { /* 1 */
   border-radius: .5rem;
   border: 0.125rem solid #ffffff;
   outline: none;
+  width: 400px;
 }
 
 .input-group input:focus {
@@ -9427,6 +9432,18 @@ th {
   stroke: currentColor;
 }
 
+.table-short {
+	width: 50px;
+}
+
+.table-normal {
+	width: 150px;
+}
+
+.table-long {
+	width: 270px;
+}
+
 .table-auto {
   table-layout: auto;
 }
@@ -18585,7 +18602,7 @@ h1{
     padding-bottom: 2rem;
   }
 
-  .sm\:px-8 {
+  .sm\: {
     padding-left: 2rem;
     padding-right: 2rem;
   }
