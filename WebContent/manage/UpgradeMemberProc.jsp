@@ -35,13 +35,13 @@
 	// 관리자 승급 성공 시
 	if(resultCheck == 1) { 
 		System.out.print("관리자 승급 성공!!");
-		script.println(JSFunction.executeAlert("관리자로 올리기 성공했습니다.", "./ManageForm.jsp"));
+		script.println(JSFunction.executeAlert("관리자로 올리기 성공했습니다.", "./ManageForm.jsp?page=1&searchId=NULL"));
 	}
 	
 	// 관리자 실패 성공 시
 	else {
 		System.out.print("관리자 승급 실패!!");
-		script.println(JSFunction.executeAlert("관리자로 올리기 실패했습니다.", "./ManageForm.jsp"));
+		script.println(JSFunction.executeAlert("관리자로 올리기 실패했습니다.", "./ManageForm.jsp?page=1&searchId=NULL"));
 	}
 	
 	script.close();

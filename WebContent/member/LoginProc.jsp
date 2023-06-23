@@ -25,7 +25,7 @@
 			response.sendRedirect("../main/MainForm.jsp");
 		
 		if (dto.getGrade().equals("manager")) // 관리자일 때의 url 진입
-			response.sendRedirect("../manage/ManageForm.jsp");
+			response.sendRedirect("../manage/ManageForm.jsp?page=1&searchId=NULL");
 	} 
 	
 	// Login 실패: 이전 페이지로 되돌아감

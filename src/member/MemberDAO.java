@@ -101,12 +101,49 @@ public class MemberDAO extends DatabaseUtil {
 		return result;
 	}
 	
-	public ArrayList<MemberDTO> selectMember() { // member 테이블에 모든 계정을 ArrayList 안에 담아 추출
+	public ArrayList<MemberDTO> selectMember(int startIndex, int endIndex) { // member 테이블에 내가 원하는 인덱스의 위치만큼 ArrayList 안에 담아 추출
 		ArrayList<MemberDTO> arr = new ArrayList<MemberDTO>();
-		String query = "SELECT * FROM member";
+		String query = "SELECT * FROM member LIMIT ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startIndex);
+			pstmt.setInt(2, endIndex);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				dto.setNum(rs.getString("num"));
+				dto.setName(rs.getString("name"));
+				dto.setId(rs.getString("id"));
+				dto.setPassword(rs.getString("password"));
+				dto.setGrade(rs.getString("grade"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setEmail(rs.getString("email"));
+				dto.setRegidate(rs.getString("regidate"));
+				
+				arr.add(dto);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Exception [selectMember]: " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return arr;
+	}
+	
+	public ArrayList<MemberDTO> selectMember(String searchId, int startIndex, int endIndex) { // member 테이블에 검색한 id에 해당하는 계정을 ArrayList 안에 담아 추출
+		ArrayList<MemberDTO> arr = new ArrayList<MemberDTO>();
+		String query = "SELECT * FROM member WHERE id = ? LIMIT ?, ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, searchId);
+			pstmt.setInt(2, startIndex);
+			pstmt.setInt(3, endIndex);
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
