@@ -1,0 +1,143 @@
+@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap');
+
+
+body {
+    display: block;
+    margin: 0px;
+}
+a {
+  text-decoration: none;
+}
+
+.header-area {
+  height: 80px;
+  background-color: #4ea685;
+}
+
+
+.header-area .main-nav {
+  min-height: 100px;
+  background: transparent;
+  display: flex;
+  border-radius: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-area .main-nav #logo{
+	color:#AAD584;
+    font-size: 50px;
+    margin-left: 15px;
+  	margin-top: 10px;
+    padding-right: 500px;
+    align-self: flex-start;
+	font-family: 'Rubik Puddles', cursive;
+	font-weight: bold;
+  	text-decoration: none;
+}
+
+.header-area .main-nav .logo {
+  border-right: 1px solid #4ea685;
+  flex-basis: 25%;
+  margin-right: 5%;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  display: flex;
+  border-right: none;
+}
+
+.header-area .main-nav .logo img {
+  width: 130px;
+}
+
+.header-area .main-nav .nav {
+  display: inline-flex;
+  flex-basis: 70%;
+  justify-content: flex-end;
+  vertical-align: middle;
+  text-align: right;
+  margin-top: 0px;
+  margin-right: 0px;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: relative;
+  z-index: 999;
+}
+
+.header-area .main-nav .nav li {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+  margin-top: -30px;
+}
+
+.header-area .main-nav .nav li a {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #AAD584;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border: transparent;
+  padding: 13px 30px;
+  border-radius: 18px;
+  letter-spacing: .3px;
+  position: relative;
+}
+
+.header-area .main-nav .nav li:last-child a {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #4ea685;
+  padding: 10px 10px 8px 20px;
+  border-radius: 23px;
+}
+
+.header-area .main-nav .nav li:last-child a img {
+  max-width: 30px;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+
+.header-area .main-nav .nav li:last-child:hover a,
+.header-area .main-nav .nav li:last-child a.active {
+  color: #fff !important;
+  background-color: #AAD584;
+}
+.header-area .main-nav .nav li:last-child .dropdown-menu li:first-child a {
+  margin-top: 50px;
+}
+
+
+.header-area .main-nav .nav li:last-child .dropdown-menu li a {
+  color: #fff!important;
+  padding: 10px 10px 8px 20px;
+  width: 200px;
+  margin-top: 30px;
+  border-radius: 0px;
+}
+
+.header-area .main-nav .nav li:last-child .dropdown-menu .menu:hover a,
+.header-area .main-nav .nav li:last-child .dropdown-menu .menu.active a {
+  color: #4ea685 !important;
+  background-color: #fff;
+}
+
+.dropdown-menu {
+	position: absolute;
+	display: none;
+	top: 100%;
+	right: 0;
+  	left: auto;
+	width: 200px;
+	margin-right:50px;
+}
