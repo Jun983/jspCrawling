@@ -1,5 +1,5 @@
-<%@page import="kategorie.KategorieDAO"%>
-<%@page import="kategorie.KategorieDTO"%>
+<%@page import="category.CategoryDAO"%>
+<%@page import="category.CategoryDTO"%>
 
 <%@page import="java.util.ArrayList"%> 
 <%@page import="java.util.List"%> 
@@ -19,18 +19,18 @@
 	/* String userId = request.getParameter("tablename");
 	System.out.println(userId); */
 
-	KategorieDAO dao = new KategorieDAO();
-	KategorieDTO dto = new KategorieDTO(); 
+	CategoryDAO dao = new CategoryDAO();
+	CategoryDTO dto = new CategoryDTO(); 
 	
 	String userId = (String)session.getAttribute("id");
-	List<KategorieDTO> kategorieList = dao.getListDAO(userId);
+	List<CategoryDTO> kategorieList = dao.getListDAO(userId);
 	 
 	/* num INT AUTO_INCREMENT PRIMARY KEY,
 	  kategorie VARCHAR(300),
 	  id VARCHAR(32), */
 
-	//id 부분 출력은 나중에는 보이지 않도록 수정하기 
-	%>
+	//id 부분 출력은 나중에는 보이지 않도록 수정하기
+%>
 	
 
 <!--카테고리 선택  -->
@@ -45,8 +45,9 @@
 	</tr>
 	 
 
-	<% for(KategorieDTO f : kategorieList){
-		%>
+	<%
+	 		for(CategoryDTO f : kategorieList){
+	 	%>
 		<tr>
 			<td><%= f.getNum() %></td>
 	        <td><%= f.getKategorie() %></td>
